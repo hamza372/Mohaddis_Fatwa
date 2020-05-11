@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FCFF"
+    tools:context=".MainActivity">
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cardView5s"
+      android:layout_width="15dp"
+      android:layout_height="53dp"
+      app:cardBackgroundColor="@color/bottom_nav_bg"
+      app:cardCornerRadius="0dp"
+      app:cardElevation="0dp"
+      app:cardMaxElevation="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/imageView15"
+      tools:visibility="visible" />
+
+  <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="0dp"
+      android:layout_height="56dp"
+      android:background="#004a99  "
+      android:minHeight="?attr/actionBarSize"
+      android:theme="?attr/actionBarTheme"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <TextView
+          android:id="@+id/topictvid"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginEnd="18dp"
+          android:layout_marginBottom="8dp"
+          android:fontFamily="@font/urdu_font_family"
+          android:letterSpacing="0.01"
+          android:lineSpacingExtra="13.3sp"
+          android:text="صفہ اول"
+          android:textColor="#ffffff"
+          android:textSize="20sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <ImageView
+          android:id="@+id/imageView2"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"
+          android:padding="5dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@drawable/burgermenu" />
+
+    </android.support.constraint.ConstraintLayout>
+
+  </android.support.v7.widget.Toolbar>
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cardView"
+      android:layout_width="125.3dp"
+      android:layout_height="125.3dp"
+      android:layout_marginTop="27dp"
+      app:layout_constraintEnd_toEndOf="@+id/cardViewmiscell"
+      app:layout_constraintStart_toStartOf="@+id/cardViewmiscell"
+      app:layout_constraintTop_toBottomOf="@+id/cardViewmiscell">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+      <ImageView
+          android:id="@+id/imageView"
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_gravity="center_horizontal|center_vertical"
+          android:layout_marginTop="30dp"
+          app:srcCompat="@drawable/shuffle" />
+
+      <TextView
+          android:id="@+id/textView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="17dp"
+
+          android:layout_weight="1"
+          android:fontFamily="@font/urdu_font_family"
+          android:text="متفرق فتاویٰ"
+          android:textAlignment="center"
+          android:textColor="#366999"
+          android:textSize="20sp" />
+
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cardView4"
+      android:layout_width="125.3dp"
+      android:layout_height="125.3dp"
+      android:layout_marginTop="27dp"
+      android:transitionName="stats"
+      app:layout_constraintEnd_toEndOf="@+id/important_fatwa"
+      app:layout_constraintStart_toStartOf="@+id/important_fatwa"
+      app:layout_constraintTop_toBottomOf="@+id/important_fatwa">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+      <ImageView
+          android:id="@+id/imageView211"
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_gravity="center_horizontal|center_vertical"
+          android:layout_marginTop="30dp"
+          app:srcCompat="@drawable/graph_analysis" />
+
+      <TextView
+          android:id="@+id/textView21"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="17dp"
+
+          android:layout_weight="1"
+          android:fontFamily="@font/urdu_font_family"
+          android:text="اعداد و شمار"
+          android:textAlignment="center"
+          android:textColor="#366999"
+          android:textSize="20sp" />
+
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+  <android.support.design.widget.BottomNavigationView
+      android:id="@+id/navigation"
+      android:layout_width="0dp"
+      android:layout_height="53dp"
+      android:background="#004a99  "
+      android:theme="@style/Widget.BottomNavigationView"
+      app:elevation="0dp"
+      app:itemBackground="@drawable/nav_item_bg_2"
+      app:itemHorizontalTranslationEnabled="false"
+      app:itemIconSize="17dp"
+      app:itemIconTint="@color/bottom_nav"
+      app:itemTextAppearance="@style/Style_TextView"
+      app:itemTextColor="@color/bottom_nav"
+      app:labelVisibilityMode="labeled"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/cardView5s"
+      app:layout_constraintStart_toEndOf="@+id/cardView5"
+      app:menu="@menu/navigation" />
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/important_fatwa"
+      android:layout_width="125.3dp"
+      android:layout_height="125.3dp"
+      android:layout_marginStart="60dp"
+      android:layout_marginTop="25dp"
+      android:layout_marginEnd="14dp"
+      android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/cardViewmiscell"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cardView2"
+      app:layout_constraintVertical_bias="0.0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+      <ImageView
+          android:id="@+id/imageView21"
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_gravity="center_horizontal|center_vertical"
+          android:layout_marginTop="30dp"
+          app:srcCompat="@drawable/favorites" />
+
+      <TextView
+          android:id="@+id/textView2"
+          android:layout_width="match_parent"
+          android:layout_height="24dp"
+          android:layout_marginTop="17dp"
+          android:layout_weight="1"
+          android:fontFamily="@font/urdu_font_family"
+          android:text="اہم فتاویٰ"
+          android:textAlignment="center"
+          android:textColor="#366999"
+          android:textSize="20sp" />
+
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cardViewmiscell"
+      android:layout_width="125.3dp"
+      android:layout_height="125.3dp"
+      android:layout_marginStart="14dp"
+      android:layout_marginTop="25dp"
+      android:layout_marginEnd="60dp"
+      android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/important_fatwa"
+      app:layout_constraintTop_toBottomOf="@+id/cardView2"
+      app:layout_constraintVertical_bias="0.0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+      <ImageView
+          android:id="@+id/imageView31"
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_gravity="center_horizontal|center_vertical"
+          android:layout_marginTop="30dp"
+          app:srcCompat="@drawable/passage_of_time_color" />
+
+      <TextView
+          android:id="@+id/textView3"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="17dp"
+          android:fontFamily="@font/urdu_font_family"
+          android:text="تازہ ترین جوابات"
+          android:textAlignment="center"
+          android:textColor="#366999"
+          android:textSize="20sp" />
+
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="42.7dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:transitionName="searchbartrans"
+        android:background="@android:color/white"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView41"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:padding="8dp"
+                app:srcCompat="@drawable/search" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="333dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:ems="10"
+                android:fontFamily="@font/urdu_font_family"
+                android:gravity="right|center_vertical"
+                android:hint="سرچ کریں"
+                android:inputType="textPersonName"
+                android:paddingRight="10dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+      android:id="@+id/cardView5"
+      android:layout_width="40dp"
+      android:layout_height="53dp"
+      app:cardBackgroundColor="@color/bottom_nav_bg"
+      app:cardCornerRadius="0dp"
+      app:cardElevation="0dp"
+      app:cardMaxElevation="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_vertical"
+        android:background="#004a99  "
+        android:padding="15dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/threedots2"
+        tools:visibility="visible" />
+  </android.support.v7.widget.CardView>
+
+  <ImageView
+      android:id="@+id/imageView15"
+      android:layout_width="0dp"
+      android:layout_height="116dp"
+      android:layout_marginTop="8dp"
+      android:scaleType="fitXY"
+      app:layout_constraintBottom_toTopOf="@+id/navigation"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cardView4"
+      app:layout_constraintVertical_bias="1.0"
+      app:srcCompat="@drawable/vector_smart_object" />
+
+</android.support.constraint.ConstraintLayout>
