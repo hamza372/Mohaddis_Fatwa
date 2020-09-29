@@ -34,6 +34,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -110,6 +111,7 @@ public class FatwaViewActivity extends AppCompatActivity {
     ProgressBar progressBar;
     String searchText = "-1";
     SharedPreferences pref;
+    WebView webAnswer;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +124,7 @@ public class FatwaViewActivity extends AppCompatActivity {
             searchText = "-1";
             Log.d("trySearchText", searchText);
         }
+
 
         fatwaDataModel = (FatwaDataModel)getIntent().getExtras().get(Constants.FATWA);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -199,6 +202,7 @@ public class FatwaViewActivity extends AppCompatActivity {
         questionObs = findViewById(R.id.textViewobs);
         answer = findViewById(R.id.tvans);
         hawaleTV = findViewById(R.id.hawale);
+        webAnswer = findViewById(R.id.fweb);
         //TODO change
         questionNo.         setTextSize(((int) pref.getFloat(Constants.FONT,answer.getTextSize()) + 150)/10);
         questionObs.        setTextSize(((int) pref.getFloat(Constants.FONT,answer.getTextSize()) + 150)/10);
@@ -250,17 +254,47 @@ public class FatwaViewActivity extends AppCompatActivity {
             }
 
 
+            str = str.replaceAll("style=\"font-family: KFGQPC Uthman Taha Naskh;\"","id = \"arbi_text\"");
             str ="<!DOCTYPE html>\n" +
                     "<html dir=\"rtl\">\n" +
-                    "<body style = \"padding:10px 10px 10px  10px\">\n" +
+                    "<head>\n" +
+                    "<link rel=\"stylesheet\" type=\"text/css\" href=\"simplecss.css\"/>\n" +
+                    "<style>@charset \"utf-8\";\n" +
+                    "@font-face {\n" +
+                    "  font-family: arabic_font;\n" +
+                    "  font-weight: normal;\n" +
+                    "  src: url(\"fonts/arabic_font.ttf\");\n" +
+                    "}\n" +
+                    "        #arbi_text{\n" +
+                    "            font-family: 'arabic_font' !important;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "@font-face {\n" +
+                    "    font-family: urdu_font;\n" +
+                    "    src: url('fonts/urdu_font.ttf');\n" +
+                    "    font-weight: normal;\n" +
+                    "    font-style: normal;\n" +
+                    "}\n" +
+                    "body {\n" +
+                    "    font-color:#004a99;\n"+
+                    "    padding: 0px;\n" +
+                    "    margin: 0px;\n" +
+                    "    font-family: 'urdu_font';\n" +
+                    "    font-weight: normal;\n" +
+                    "}\n" +
+                    "</style>"+
+                    "</head>"+
+                    "<body style = \"padding:10px 10px 10px  10px;background-color:#d8f3ff;\">\n" +
                     str+ "</body>\n" +
                     "</html>";
             Log.d("trySearchRes",str);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                answer.setText(Html.fromHtml(str, Html.FROM_HTML_MODE_COMPACT));
+               // answer.setText(Html.fromHtml(str, Html.FROM_HTML_MODE_COMPACT));
+                webAnswer.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "utf-8", null);
                 //answer.setText(Html.fromHtml(fatwaDataModel.getAnswer(), Html.FROM_HTML_MODE_COMPACT));
             } else {
-                answer.setText(Html.fromHtml(fatwaDataModel.getAnswer()));
+                webAnswer.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "utf-8", null);
+               // answer.setText(Html.fromHtml(fatwaDataModel.getAnswer()));
               //  Log.d("tryAnswer",Html.fromHtml(fatwaDataModel.getAnswer()).toString());
             }
 
@@ -577,19 +611,51 @@ public class FatwaViewActivity extends AppCompatActivity {
                     }else{
                         str = fatwaDataModel.getAnswer();
                     }
+                    str = str.replaceAll("style=\"font-family: KFGQPC Uthman Taha Naskh;\"","id = \"arbi_text\"");
                     str ="<!DOCTYPE html>\n" +
                             "<html dir=\"rtl\">\n" +
-                            "<body style = \"padding:10px 10px 10px  10px\">\n" +
+                            "<head>\n" +
+                            "<link rel=\"stylesheet\" type=\"text/css\" href=\"simplecss.css\"/>\n" +
+                            "<style>@charset \"utf-8\";\n" +
+                            "@font-face {\n" +
+                            "  font-family: arabic_font;\n" +
+                            "  font-weight: normal;\n" +
+                            "  src: url(\"fonts/arabic_font.ttf\");\n" +
+                            "}\n" +
+                            "        #arbi_text{\n" +
+                            "            font-family: 'arabic_font' !important;\n" +
+                            "        }\n" +
+                            "\n" +
+                            "@font-face {\n" +
+                            "    font-family: urdu_font;\n" +
+                            "    src: url('fonts/urdu_font.ttf');\n" +
+                            "    font-weight: normal;\n" +
+                            "    font-style: normal;\n" +
+                            "}\n" +
+                            "body {\n" +
+                            "    font-color:#004a99;\n"+
+                            "    padding: 0px;\n" +
+                            "    margin: 0px;\n" +
+                            "    font-family: 'urdu_font';\n" +
+                            "    font-weight: normal;\n" +
+                            "}\n" +
+                            "</style>"+
+                            "</head>"+
+                            "<body style = \"padding:10px 10px 10px  10px;background-color:#d8f3ff;\">\n" +
                             str+ "</body>\n" +
                             "</html>";
                     Log.d("trySearchRes",str);
+
+
                    // Log.d("trySearchRes",str);
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        answer.setText(Html.fromHtml(str, Html.FROM_HTML_MODE_COMPACT));
+                        webAnswer.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "utf-8", null);
+                        // answer.setText(Html.fromHtml(str, Html.FROM_HTML_MODE_COMPACT));
                         //answer.setText(Html.fromHtml(fatwaDataModel.getAnswer(), Html.FROM_HTML_MODE_COMPACT));
                     } else {
-                        answer.setText(Html.fromHtml(fatwaDataModel.getAnswer()));
+                        webAnswer.loadDataWithBaseURL("file:///android_asset/", str, "text/html", "utf-8", null);
+                       // answer.setText(Html.fromHtml(fatwaDataModel.getAnswer()));
                         //  Log.d("tryAnswer",Html.fromHtml(fatwaDataModel.getAnswer()).toString());
                     }
 
@@ -674,9 +740,9 @@ public class FatwaViewActivity extends AppCompatActivity {
 
         //webSettings.setDefaultFontSize(10);
         if(pref.getFloat(Constants.FONT,-1) != -1) {
-            seekBar.setProgress((int) pref.getFloat(Constants.FONT,answer.getTextSize()));
+            seekBar.setProgress((int) pref.getFloat(Constants.FONT,(int) webAnswer.getSettings().getDefaultFontSize()));
         }else{
-            seekBar.setProgress((int) answer.getTextSize());
+            seekBar.setProgress((int) webAnswer.getSettings().getDefaultFontSize());
         }
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -684,8 +750,9 @@ public class FatwaViewActivity extends AppCompatActivity {
                 float newfontsize = seekBar.getProgress();
                 pref.edit().putFloat(Constants.FONT,newfontsize).apply();
                 //Log.d("tryFontSize",newfontsize+"");
-                //   webSettings.setDefaultFontSize((int) newfontsize);
-                answer.setTextSize((newfontsize + 150)/10);
+                //Log.d("tryFonts",newfontsize)
+                webAnswer.getSettings().setDefaultFontSize((((int) newfontsize)+150)/10);
+                //answer.setTextSize((newfontsize + 150)/10);
                 question.setTextSize((newfontsize + 150)/10);
                 questionDate.setTextSize((newfontsize + 150)/10);
                 questionNo.setTextSize((newfontsize + 150)/10);
